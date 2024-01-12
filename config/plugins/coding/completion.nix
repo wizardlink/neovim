@@ -1,17 +1,24 @@
 {
   plugins = {
+    # Enable snippet engine.
+    luasnip.enable = true;
+
+    # Enable the completion engine.
     nvim-cmp = {
       enable = true;
       autoEnableSources = true;
 
+      # Enable integration with luasnip.
+      snippet.expand = "luasnip";
+
       sources = [
-      { name = "nvim_lsp"; }
-      { name = "path"; }
-      { 
-        name = "buffer";
-        # This way it finds words in all open buffers.
-        option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
-      }
+        { name = "nvim_lsp"; }
+        { name = "path"; }
+        { 
+          name = "buffer";
+          # This way it finds words in all open buffers.
+          option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+        }
       ];
 
       mapping = {
