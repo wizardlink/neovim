@@ -8,7 +8,10 @@
 
   config = {
     # Enable wayland clipboard integration.
-    clipboard.providers.wl-copy.enable = true;
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
 
     # Set the colorscheme.
     colorschemes.catppuccin = {
