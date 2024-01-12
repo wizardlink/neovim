@@ -45,8 +45,7 @@
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
             # inherit (inputs) foo;
-            inherit (inputs) transparent-nvim;
-            inherit (inputs) rustaceanvim;
+            inherit (inputs) transparent-nvim rustaceanvim;
           };
         };
       in {

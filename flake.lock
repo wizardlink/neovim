@@ -196,11 +196,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1705021258,
-        "narHash": "sha256-ir9Y7sVPZp1fhOMnepExBNoPjKnk8qu6D7mA3FquXnc=",
+        "lastModified": 1705041245,
+        "narHash": "sha256-PAKHmKA2BmIjZcgWRpRPJbPLbEjPAJcKHpoUqQTLsWE=",
         "owner": "wizardlink",
         "repo": "nixvim",
-        "rev": "b2cb41d92130aad17fa63dc5f646420299589dab",
+        "rev": "802c084deb79cc43c54d30b5ca559dd42f4659be",
         "type": "github"
       },
       "original": {
