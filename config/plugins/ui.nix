@@ -1,12 +1,27 @@
-{ pkgs, transparent-nvim, ... }:
+{ lib, pkgs, transparent-nvim, ... }:
 
+let
+  # FileTypes that I don't want indentation plugins to affect.
+  filetypeNoIndent = [
+    "help"
+    "alpha"
+    "dashboard"
+    "neo-tree"
+    "Trouble"
+    "trouble"
+    "notify"
+    "toggleterm"
+  ];
+in
 {
   plugins = {
     dashboard = {
       enable = true;
 
+      theme = "doom";
       hideStatusline = true;
       hideTabline = true;
+      hideWinbar = true;
 
       header = [
         "⢸⠉⣹⠋⠉⢉⡟⢩⢋⠋⣽⡻⠭⢽⢉⠯⠭⠭⠭⢽⡍⢹⡍⠙⣯⠉⠉⠉⠉⠉⣿⢫⠉⠉⠉⢉⡟⠉⢿⢹⠉⢉⣉⢿⡝⡉⢩⢿⣻⢍⠉⠉⠩⢹⣟⡏⠉⠹⡉⢻⡍⡇"
@@ -20,12 +35,14 @@
         "⢸⠀⡟⠀⢸⡆⢹⡜⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠋⣾⡏⡇⡎⡇⠀⡇"
         "⢸⠀⢃⡆⠀⢿⡄⠑⢽⣄⠀⠀⠀⢀⠂⠠⢁⠈⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠄⡐⢀⠂⠀⠀⣠⣮⡟⢹⣯⣸⣱⠁⠀⡇"
       ];
+
       center = [
-        { action = "Telescope oldfiles"; icon = ""; desc = " Recent files"; shortcut = "r"; }
-        { action = "Telescope projects"; icon = ""; desc = " Projects"; shortcut = "p"; }
-        { action = "lua require(\"persistence\").load()"; icon = "󱞇"; desc = " Restore session"; shortcut = "s"; }
-        { action = "qa"; icon = "󰅚"; desc = " Quit"; shortcut = "q"; }
+        { action = "Telescope oldfiles"; icon = ""; desc = "  Recent files"; key = "r"; }
+        { action = "Telescope projects"; icon = ""; desc = "  Projects"; key = "p"; }
+        { action = "lua require(\"persistence\").load()"; icon = "󱞇"; desc = "  Restore session"; key = "s"; }
+        { action = "qa"; icon = "󰅚"; desc = "  Quit"; key = "q"; }
       ];
+
       footer = [ "  wizardlink/neovim" ];
     };
 
@@ -51,6 +68,9 @@
 
       indent.char = "│";
       indent.tabChar = "│";
+
+      # FileTypes that indentation makes no sense.
+      exclude.filetypes = filetypeNoIndent;
 
       # Disable scope, we use mini.indentscope for that.
       scope.enabled = false;
@@ -148,4 +168,16 @@
       src = transparent-nvim; # This comes from `flake.nix`.
     })
   ];
+
+  # Disable mini.indentscope in certain scenarios.
+  extraConfigLua = ''
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
+        ${lib.strings.concatMapStrings (a: "'" + a + "',\n") filetypeNoIndent}
+      },
+      callback = function()
+        vim.b.miniindentscope_disable = true
+      end,
+    });
+  '';
 }
