@@ -34,6 +34,24 @@
           modes = [ "i" "s" ];
         };
       };
+
+      formatting.format = ''
+        function(_, item)
+          local icons = {
+            Constant = "󱝋",
+            Field = "󰆦",
+            Interface = "󰀫",
+            Method = "󰘦",
+            Snippet = "󰦨",
+            Text = "󰗧",
+            Variable = "󰀼",
+          }
+
+          item.kind = icons[item.kind] or ""
+
+          return item
+        end,
+      '';
     };
   };
 }

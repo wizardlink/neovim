@@ -22,15 +22,8 @@
     local wk = require("which-key")
 
     wk.register({
-      ["<leader>"] = { "<cmd>Telescope find_files<cr>", "Find file" },
       e = { "<cmd>NvimTreeFindFileToggle<cr>", "Browse files" },
       h = { "<cmd>noh<cr>", "Stop search highlight" },
-      p = { "<cmd>Telescope projects<cr>", "Open project" },
-      s = {
-        name = "Search",
-        b = { "<cmd>Telescope buffers<cr>", "Search buffers" },
-        t = { "<cmd>Telescope live_grep<cr>", "Search text" },
-      },
       t = {
         name = "Terminal",
         o = { "<cmd>FloatermNew<cr>", "Open terminal" },
