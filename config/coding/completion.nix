@@ -14,7 +14,7 @@
       sources = [
         { name = "nvim_lsp"; }
         { name = "path"; }
-        { 
+        {
           name = "buffer";
           # This way it finds words in all open buffers.
           option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";

@@ -58,10 +58,7 @@
       # Ignores casing when searching.
       ignorecase = true;
       smartcase = true; # But this makes so when it's uppercase
-                        # we care about casing.
-
-      # Fold code based off of syntax.
-      foldmethod = "syntax";
+      # we care about casing.
 
       ##--------##
       ## CODING ##
@@ -73,8 +70,8 @@
       shiftwidth = 2;
       tabstop = 2;
 
-      # Improves indentation when creating a new line.
-      smartindent = true;
+      # Better indentation out of the box.
+      cindent = true;
     };
 
     extraConfigLua = ''

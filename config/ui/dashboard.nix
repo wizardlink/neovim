@@ -8,14 +8,14 @@
     # meant to be something you just drop-in and use.
     theme = "doom";
     hideStatusline = true; # Hides statusline while in dashboard.
-      hideTabline = true;    # Hides tabline while in dashboard.
-      hideWinbar = true;     # Hides winbar while in dashboard.
+    hideTabline = true; # Hides tabline while in dashboard.
+    hideWinbar = true; # Hides winbar while in dashboard.
 
-      weekHeader = {
-        enable = true;
-        append = lib.lists.flatten (builtins.split "\n" (builtins.readFile ./dashboard-header.txt));
-        concat = "Zehahahaha! PEOPLE'S DREAMS... DON'T EVER END! AM I RIGHT?";
-      };
+    weekHeader = {
+      enable = true;
+      append = lib.lists.flatten (builtins.split "\n" (builtins.readFile ./dashboard-header.txt));
+      concat = "Zehahahaha! PEOPLE'S DREAMS... DON'T EVER END! AM I RIGHT?";
+    };
 
     # Reads off of `dashboard-header.txt` to set the header ASCII art.
     header = lib.lists.flatten (builtins.split "\n" (builtins.readFile ./dashboard-header.txt));

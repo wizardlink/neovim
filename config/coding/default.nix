@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ./completion.nix
@@ -16,7 +18,24 @@
     };
 
     # Enable formatting.
-    conform-nvim.enable = true;
+    conform-nvim = {
+      enable = true;
+
+      # Save after half a second
+      formatOnSave.timeoutMs = 500;
+
+      formatters.injected = { options = { ignore_errors = true; }; };
+
+      formattersByFt.nix = [ "nixpkgs_fmt" ];
+
+      extraOptions = {
+        format = {
+          async = false;
+          quiet = false;
+          timeout_ms = 3000;
+        };
+      };
+    };
 
     # Enhance searching.
     flash.enable = true;
@@ -59,16 +78,6 @@
           n_lines = 500;
         };
 
-        # Allow easy commenting multiple lines
-        # through a `gcc` keybind.
-        comment = {
-          custom_commentstring = ''
-            function()
-              return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-            end
-          '';
-        };
-
         # Manipulate surrounding text.
         surround = {
           mappings = {
@@ -80,11 +89,14 @@
             replace = "gsr"; # Replace surrounding
             update_n_lines = "gsn"; # Update `n_lines`
           };
-
         };
       };
     };
   };
+
+  extraPackages = [
+    pkgs.nixpkgs-fmt # For formatting automatically nix files.
+  ];
 
   extraConfigLua = ''
     local wk = require("which-key")
@@ -101,5 +113,13 @@
         n = "Update `n_lines`",
       },
     }, { prefix = "g" })
+
+    -- Allow easy commenting multiple lines
+    -- through a `gcc` keybind.
+    require("mini.comment").setup({
+      custom_commentstring = function()
+        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+      end
+    })
   '';
 }

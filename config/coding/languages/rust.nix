@@ -7,11 +7,16 @@
 
     # Enable rust-analyzer LSP.
     # Add crates as a completion source.
-    nvim-cmp.sources = [ { name = "crates"; } ];
+    nvim-cmp.sources = [{ name = "crates"; }];
+
+    conform-nvim.formattersByFt.rust = [ "rustfmt" ];
   };
 
-  extraPackages = [
-    pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
+  extraPackages = with pkgs; [
+    cargo
+    rust
+    rustfmt
+    vscode-extensions.vadimcn.vscode-lldb.adapter
   ];
 
   extraPlugins = [
