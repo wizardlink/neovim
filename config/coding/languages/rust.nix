@@ -13,8 +13,6 @@
   };
 
   extraPackages = with pkgs; [
-    cargo
-    rustc
     rustfmt
     vscode-extensions.vadimcn.vscode-lldb.adapter
   ];
