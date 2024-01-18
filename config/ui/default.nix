@@ -9,6 +9,17 @@
   ];
 
   plugins = {
+    # Shows on the top all the currently open buffers.
+    bufferline = {
+      enable = true;
+
+      # Don't always render this.
+      alwaysShowBufferline = false;
+
+      # Integrate with LSP.
+      diagnostics = "nvim_lsp";
+    };
+
     # Floating terminal window.
     floaterm = {
       enable = true;
@@ -84,4 +95,12 @@
       src = transparent-nvim; # This comes from `flake.nix`.
     })
   ];
+
+  extraConfigLua = ''
+    local wk = require("which-key")
+
+    wk.register({
+      c = { "<cmd>bd<cr>", "Close buffer" },
+    }, { prefix = "<leader>" })
+  '';
 }
