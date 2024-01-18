@@ -96,11 +96,35 @@
     })
   ];
 
+  # Set keybinds which aren't relevant to `<leader>`.
+  keymaps = [
+    # Move between buffers with tab in normal mode
+    {
+      action = "<cmd>BufferLineCycleNext<cr>";
+      key = "<tab>";
+      mode = [ "n" ];
+      options.silent = true;
+    }
+    {
+      action = "<cmd>BufferLineCyclePrev<cr>";
+      key = "<s-tab>";
+      mode = [ "n" ];
+      options.silent = true;
+    }
+  ];
+
   extraConfigLua = ''
     local wk = require("which-key")
 
     wk.register({
+      e = { "<cmd>NvimTreeFindFileToggle<cr>", "Browse files" },
       c = { "<cmd>bd<cr>", "Close buffer" },
+      t = {
+        name = "Terminal",
+        o = { "<cmd>FloatermNew<cr>", "Open terminal" },
+        s = { "<cmd>FloatermSend<cr>", "Send current line to terminal" },
+        t = { "<cmd>FloatermToggle<cr>", "Toggle terminal visibility" },
+      },
     }, { prefix = "<leader>" })
   '';
 }
