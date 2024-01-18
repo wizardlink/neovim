@@ -164,7 +164,7 @@
       tabstop = 2;
 
       # Better indentation out of the box.
-      smartindent = true;
+      cindent = true;
 
       # Allow going through non-characters to edit during
       # virtual block mode.
