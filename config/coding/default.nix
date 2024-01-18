@@ -4,6 +4,7 @@
   imports = [
     ./completion.nix
     ./languages
+    ./lsp.nix
   ];
 
   plugins = {
@@ -43,19 +44,6 @@
     # Enable linting.
     lint.enable = true;
 
-    # Enable LSP.
-    lsp = {
-      enable = true;
-
-      servers = {
-        # Nix file LSP.
-        nixd = {
-          enable = true;
-          autostart = true;
-        };
-      };
-    };
-
     # Save coding sessions to easily go back to them.
     persistence.enable = true;
 
@@ -77,6 +65,21 @@
         ai = {
           n_lines = 500;
         };
+
+        ## Allow easy commenting multiple lines
+        ## through a `gcc` keybind.
+        comment = {
+          custom_commentstring = {
+            __raw = ''
+              function()
+                return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+              end
+            '';
+          };
+        };
+
+        # Empty object but it's enough for it to work.
+        pairs = { };
 
         # Manipulate surrounding text.
         surround = {
@@ -113,13 +116,5 @@
         n = "Update `n_lines`",
       },
     }, { prefix = "g" })
-
-    -- Allow easy commenting multiple lines
-    -- through a `gcc` keybind.
-    require("mini.comment").setup({
-      custom_commentstring = function()
-        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-      end
-    })
   '';
 }

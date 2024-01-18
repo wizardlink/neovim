@@ -1,3 +1,5 @@
+{ pkgs, friendly-snippets, ... }:
+
 {
   plugins = {
     # Enable snippet engine.
@@ -86,4 +88,11 @@
       '';
     };
   };
+
+  extraPlugins = [
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "friendly-snippets"; # Add preset snippets
+      src = friendly-snippets;
+    })
+  ];
 }

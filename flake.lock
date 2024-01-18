@@ -73,6 +73,22 @@
         "type": "github"
       }
     },
+    "friendly-snippets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704674897,
+        "narHash": "sha256-ws6Lb5DLFv7nRu7kCFoxM1WkAZ3l3PTbh1lpr1rEKBU=",
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "rev": "69a2c1675b66e002799f5eef803b87a12f593049",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -256,6 +272,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "friendly-snippets": "friendly-snippets",
         "headlines-nvim": "headlines-nvim",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",

@@ -25,6 +25,11 @@
       url = "github:lukas-reineke/headlines.nvim";
       flake = false;
     };
+
+    friendly-snippets = {
+      url = "github:rafamadriz/friendly-snippets";
+      flake = false;
+    };
   };
 
   outputs =
@@ -58,7 +63,7 @@
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               # inherit (inputs) foo;
-              inherit (inputs) transparent-nvim rustaceanvim schemastore-nvim headlines-nvim;
+              inherit (inputs) transparent-nvim rustaceanvim schemastore-nvim headlines-nvim friendly-snippets;
             };
           };
         in
