@@ -47,7 +47,12 @@
     # Better `vim.notify()`.
     notify = {
       enable = true;
+
+      # Set a default in case transparency fails.
       backgroundColour = "#000000";
+
+      # Smaller timeout.
+      timeout = 3000;
     };
 
     # Better netrw.
