@@ -33,6 +33,7 @@ with lib.attrsets; {
   };
 
   extraPackages = [
+    pkgs.nodePackages.eslint
     pkgs.nodePackages.prettier
   ];
 }
