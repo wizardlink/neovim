@@ -30,6 +30,11 @@
       url = "github:rafamadriz/friendly-snippets";
       flake = false;
     };
+
+    omnisharp-extended-lsp = {
+      url = "github:Hoffs/omnisharp-extended-lsp.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -63,7 +68,13 @@
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               # inherit (inputs) foo;
-              inherit (inputs) transparent-nvim rustaceanvim schemastore-nvim headlines-nvim friendly-snippets;
+              inherit (inputs)
+                friendly-snippets
+                headlines-nvim
+                omnisharp-extended-lsp
+                rustaceanvim
+                schemastore-nvim
+                transparent-nvim;
             };
           };
         in
