@@ -1,4 +1,4 @@
-{ pkgs, transparent-nvim, ... }:
+{ pkgs, transparent-nvim, dressing-nvim, ... }:
 
 {
   imports = [
@@ -93,6 +93,12 @@
     (pkgs.vimUtils.buildVimPlugin {
       name = "transparent-nvim";
       src = transparent-nvim; # This comes from `flake.nix`.
+    })
+
+    # Better vim.ui interfaces
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "dessing-nvim";
+      src = dressing-nvim;
     })
   ];
 

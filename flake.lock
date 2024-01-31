@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dressing-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706493651,
+        "narHash": "sha256-Y+ABLhb3GIaPKOuQzkxsZsTo1WfgURAYVioP/eCSp/Y=",
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "rev": "6f212262061a2120e42da0d1e87326e8a41c0478",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -287,6 +303,7 @@
     },
     "root": {
       "inputs": {
+        "dressing-nvim": "dressing-nvim",
         "flake-parts": "flake-parts",
         "friendly-snippets": "friendly-snippets",
         "headlines-nvim": "headlines-nvim",

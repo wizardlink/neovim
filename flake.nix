@@ -35,6 +35,11 @@
       url = "github:Hoffs/omnisharp-extended-lsp.nvim";
       flake = false;
     };
+
+    dressing-nvim = {
+      url = "github:stevearc/dressing.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -69,6 +74,7 @@
             extraSpecialArgs = {
               # inherit (inputs) foo;
               inherit (inputs)
+                dressing-nvim
                 friendly-snippets
                 headlines-nvim
                 omnisharp-extended-lsp
